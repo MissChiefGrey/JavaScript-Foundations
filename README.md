@@ -44,10 +44,10 @@ Check out the resources below for more of a step-by-step walk-through of this ma
 
 Using VSCode and Command Line:
 
-1. Fork repo and add TL as collaborator on Github.
-2. Clone your fork (not Lambda's repo by mistake!).
-3. `cd` into your newly cloned repository.
-4. Create a new branch by typing `git checkout -b <firstName-lastName>`.
+1.{X} Fork repo and add TL as collaborator on Github.
+2.{X} Clone your fork (not Lambda's repo by mistake!).
+3.{X} `cd` into your newly cloned repository.
+4.{X} Create a new branch by typing `git checkout -b <firstName-lastName>`.
 
 ### Task 2: Complete MVP Requirements
 
