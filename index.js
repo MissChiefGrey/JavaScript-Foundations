@@ -3,7 +3,10 @@
 // 🏡 Task 1: Variables
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
 */
-
+let principal = 200000;
+let interestRate = 0.05;
+let years= 30;
+let name = 'Elizabeth';
 
 
 
@@ -16,7 +19,8 @@ Create a variable called `monthlyInterestRate` and give it the value of interest
 Create another variable called `periods` and give it the value of years*12.
 */
 
-
+let monthlyInterestRate = interestRate / 12;
+let periods = years * 12;
 
 
 // 🏡 Task 2: Harder Math
@@ -28,7 +32,10 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
-
+// M = P [ I ( 1 + I )^N ] / [ ( 1 + I )^N – 1 ]
+let monthlyRate = principal * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1))
+monthlyRate = Math.round(monthlyRate * 100) / 100
+console.log("Task2 monthlyRate:", monthlyRate);
 
 
 
@@ -37,9 +44,15 @@ When your math is correct, monthlyRate will equal 1073.64
 
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
+function mortgageCalculator3() {
+    let monthlyRate = principal * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1))
+    monthlyRate = Math.round(monthlyRate * 100) / 100
+    let results = `${name}, your monthly rate is ${monthlyRate}`;
+    return results
+}
 
 
-
+console.log("Task 3", mortgageCalculator3())
 
 
 // 🏡 Task 4: Arguments and Parameters
@@ -48,7 +61,15 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 For example,
 mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 */
-
+function mortgageCalculator4(P, I, N) {
+    let monthlyInterestRate = I / 12;
+    let periods = N * 12;
+    let monthlyRate = P * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1))
+    monthlyRate = Math.round(monthlyRate * 100) / 100
+    let results = name + ", your monthly rate is " + monthlyRate;
+    return results
+}
+console.log("Task 4", mortgageCalculator4(200000, 0.05, 30))
 
 
 
@@ -59,6 +80,21 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
 
+function mortgageCalculator5(P, I, N, creditScore) {
+    if (creditScore > 740) {
+        var I = (I - 0.005);
+    } else if (creditScore < 660) {
+        var I = (I + 0.005);
+    } else {
+        var I = I;
+    }
+    let monthlyInterestRate = I / 12;
+    let periods = N * 12;
+    let monthlyRate = P * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1))
+    return monthlyRate = Math.round(monthlyRate * 100) / 100
+    // let creditScore = Math.random() * (800 - 0 + 1) + 0;
+}
+console.log("Task 5", mortgageCalculator5(200000, 0.05, 30, 550))
 
 
 
@@ -78,6 +114,19 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+function variableInterestRate(P, I, N) {
+    I -= 0.02;
+    for (x = I; x < 9; x++) {
+        let monthlyInterestRate = I / 12;
+        let periods = N * 12;
+        let monthlyRate = P * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1))
+        monthlyRate = Math.round(monthlyRate * 100) / 100
+        monthlyRate = monthlyRate.toFixed(2);
+        console.log(`${name}, with an interest of ${I.toFixed(2)}, your monthly rate is, $${monthlyRate}`)
+        I = I += 0.005;
+    }
+}
+variableInterestRate(200000, 0.04, 30) 
 
 
 
@@ -92,6 +141,6 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
-
+sign = window.prompt("INPUT YOUR OWN DATA");
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
